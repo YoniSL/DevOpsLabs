@@ -1,5 +1,7 @@
 FROM python:3-alpine
 
+RUN apk --update add python py-pip openssl ca-certificates py-openssl wget
+RUN apk --update add --virtual build-dependencies libffi-dev openssl-dev python-dev py-pip build-base 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
