@@ -18,6 +18,9 @@ student_db = TinyDB(db_file_path)
 def add_student(student):
     queries = []
     query = Query()
+    if student.first_name == '' or student.last_name == '':
+        return 'yo beter doe je normaal', 400
+
     queries.append(query.first_name == student.first_name)
     queries.append(query.last_name == student.last_name)
     query = reduce(lambda a, b: a & b, queries)
@@ -33,10 +36,11 @@ def add_student(student):
 def get_student_by_id(student_id, subject):
     student = student_db.get(doc_id=int(student_id))
     if not student:
-        return student
+        return 'student ded', 404
     student = Student.from_dict(student)
     if not subject:
         return student
+    return student
 
 
 def delete_student(student_id):
