@@ -15,7 +15,7 @@ class Student(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, student_id: int=None, first_name: str=None, last_name: str=None, grades: List[int]=None):  # noqa: E501
+    def __init__(self, student_id: int=None, first_name: str=None, last_name: str=None, grades: Dict[str, int]=None):  # noqa: E501
         """Student - a model defined in Swagger
 
         :param student_id: The student_id of this Student.  # noqa: E501
@@ -31,7 +31,7 @@ class Student(Model):
             'student_id': int,
             'first_name': str,
             'last_name': str,
-            'grades': List[int]
+            'grades': Dict[str, int]
         }
 
         self.attribute_map = {
@@ -121,7 +121,7 @@ class Student(Model):
         self._last_name = last_name
 
     @property
-    def grades(self) -> List[int]:
+    def grades(self) -> Dict[str, int]:
         """Gets the grades of this Student.
 
 
@@ -131,7 +131,7 @@ class Student(Model):
         return self._grades
 
     @grades.setter
-    def grades(self, grades: List[int]):
+    def grades(self, grades: Dict[str, int]):
         """Sets the grades of this Student.
 
 
